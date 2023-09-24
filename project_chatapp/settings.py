@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-n#x@t-*b@x(h(5b=k)rx_$2f8iq!m_b$s#72xt$^0m(l2i@to2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
+    'channels',
     'django.contrib.staticfiles',
     'chatapp'
 ]
@@ -69,6 +71,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'project_chatapp.wsgi.application'
+ASGI_APPLICATION = 'project_chatapp.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 
 # Database
