@@ -6,6 +6,8 @@ from django.http import JsonResponse
 import random
 import string
 
+from .models import *
+
 # Create your views here.
 
 def register_user(request):
@@ -37,8 +39,11 @@ def login_user(request):
       auth_user = authenticate(username=user_object.username, password=user_password)
       if auth_user:
         login(request, auth_user)
-        token = ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(24)])
-        return JsonResponse({'status': 'success', 'message': 'user loggedin successfully', 'token': token})
+        auth_token = ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(24)])
+        user_token_object = UserToken()
+        user_token_object.set_user_token(user=auth_user, token=auth_token, status=True)
+        user_token_object.save()
+        return JsonResponse({'status': 'success', 'message': 'user loggedin successfully', 'token': auth_token})
       else:
         return JsonResponse({'status': 'error', 'message': 'user not found'})
     else:
