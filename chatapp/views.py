@@ -82,3 +82,20 @@ def logout_user(request):
       return JsonResponse({'status': 'error', 'message': 'no user is logged in currently'})
   else:
     return JsonResponse({'status': 'error', 'message': 'invalid request method (only post)'})
+  
+def get_online_users(request):
+  if request.method == 'GET':
+    users = []
+    user_token_objects = UserToken.objects.filter(status=True)
+    for user_token_object in user_token_objects:
+      users.append(User.objects.filter(id=user_token_object.user.id).first().username)
+    
+    return JsonResponse({'status': 'success', 'online_users': users})
+  
+def start_chat(request):
+  if request.method == 'POST':
+    recipient = json.loads(request.body)['recipient']
+    # user_token_object = UserToken.objects.filter(user=request.user, status=True)
+    return JsonResponse({'status': 'success', 'message': f'recipient {recipient} is available to chat'})
+  else:
+    return JsonResponse({'status': 'error', 'message': 'invalid request method (only post)'})
