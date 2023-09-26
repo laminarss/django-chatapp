@@ -1,4 +1,5 @@
 from channels.generic.websocket import WebsocketConsumer
+import json
 
 class ChatConsumer(WebsocketConsumer):
   def connect(self):
@@ -8,4 +9,4 @@ class ChatConsumer(WebsocketConsumer):
     pass
   
   def receive(self, text_data):
-    pass
+    self.send(text_data)
