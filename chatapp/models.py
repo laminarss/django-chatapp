@@ -11,3 +11,12 @@ class UserToken(models.Model):
     self.user = user
     self.token = token
     self.status = status
+    
+class ChatRoom(models.Model):
+  id = models.BigAutoField(primary_key=True)
+  room = models.CharField(max_length=255)
+    
+class Messsages(models.Model):
+  id = models.BigAutoField(primary_key=True)
+  message = models.CharField(max_length=255)
+  room = models.ForeignKey(ChatRoom, on_delete=models.CASCADE)
