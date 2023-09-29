@@ -67,7 +67,8 @@ def login_user(request):
       return JsonResponse({'status': 'error', 'message': 'invalid email/ password'})
   
   else:
-    return JsonResponse({'status': 'error', 'message': 'invalid request method (only post)'})
+    return render(request, 'login.html')
+    # return JsonResponse({'status': 'error', 'message': 'invalid request method (only post)'})
 
 
 def logout_user(request):
