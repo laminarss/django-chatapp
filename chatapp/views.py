@@ -30,7 +30,8 @@ def register_user(request):
       return JsonResponse({'status': 'error', 'message': 'invalid user Name/ email/ password'})
   
   else:
-    return JsonResponse({'status': 'error', 'message': 'invalid request method (only post)'})
+    return render(request, 'register.html')
+    # return JsonResponse({'status': 'error', 'message': 'invalid request method (only post)'})
   
 def login_user(request):
   if request.method == 'POST':
