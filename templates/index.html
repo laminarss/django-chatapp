@@ -1,0 +1,33 @@
+
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ChatApp</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <nav class="px-4 flex justify-between text-white bg-teal-500">
+      <p class="py-4 text-3xl">ChatApp</p>
+      <a href="./login" class="my-4 py-2 px-4 rounded-md outline-teal-800 hover:outline bg-teal-600 text-white">Login</a>
+    </nav>
+    <div class="w-screen my-4 py-8 px-4 flex">
+      <img class="w-1/2" src="https://cdni.iconscout.com/illustration/premium/thumb/chatbot-4262379-3543534.png" />
+      {% comment %} <img class="w-1/2" src="{% static 'images/illustration.webp' %}" /> {% endcomment %}
+      <div class="w-1/2 flex flex-col flex-wrap justify-center items-center">
+        <div>
+          <p class="my-6 font-bold text-3xl text-teal-600">Experience Live Chat</p>
+          <p class="my-1 text-xl">Send and receive messages</p>
+          <p class="text-xl">seamlessly in realtime</p>
+          <div class="my-8">
+            <a href="./register" class="py-2 px-4 rounded-md outline-teal-800 hover:outline bg-teal-600 text-white text-xl">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

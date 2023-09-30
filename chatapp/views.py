@@ -10,6 +10,9 @@ from .models import *
 
 # Create your views here.
 
+def index(request):
+  return render(request, 'index.html')
+
 def register_user(request):
   if request.method == 'POST':
     user_name = request.POST.get('name', None)

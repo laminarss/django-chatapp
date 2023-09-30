@@ -8,6 +8,7 @@ websocket_urlpatterns = [
 ]
 
 urlpatterns = [
+  path('', view=views.index, name='index'),
   path('register/', view=views.register_user, name='register'),
   path('login/', view=views.login_user, name='login'),
   path('logout/', view=views.logout_user, name='logout'),
