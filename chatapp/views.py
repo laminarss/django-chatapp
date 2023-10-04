@@ -88,6 +88,9 @@ def logout_user(request):
   else:
     return JsonResponse({'status': 'error', 'message': 'invalid request method (only post)'})
   
+def home(request):
+  return render(request, 'home.html')
+  
 def get_online_users(request):
   if request.method == 'GET':
     users = []
